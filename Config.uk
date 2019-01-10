@@ -5,4 +5,25 @@ menuconfig LIBLKL
 	select LIBNEWLIBC
 
 if LIBLKL
+choice
+	prompt "lkl config"
+	default LKL_DEFCONFIG
+	help
+	  Select lkl config
+
+config LKL_DEFCONFIG
+	bool "Default from ARCH supplied defconfig"
+config LKL_TINYCONFIG
+	bool "Configure the tiniest possible kernel"
+config LKL_RANDCONFIG
+	bool "Random answer to all options"
+config LKL_ALLDEFCONFIG
+	bool "All symbols set to default"
+config LKL_ALLMODCONFIG
+	bool "Selecting modules when possible"
+config LKL_ALLYESCONFIG
+	bool "All options are accepted with yes"
+config LKL_ALLNOCONFIG
+	bool "All options are answered with no"
+endchoice
 endif

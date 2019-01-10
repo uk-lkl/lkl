@@ -8,12 +8,35 @@ endif
 $(eval LKL_SRCDIR := $(LIBLKL_BASE)/linux/tools/lkl)
 $(eval LKL_OUTPUT := $(LIBLKL_BUILD)/linux)
 
+ifeq ($(CONFIG_LKL_DEFCONFIG),y)
+  $(eval KCONFIG := "defconfig")
+endif
+ifeq ($(CONFIG_LKL_TINYCONFIG),y)
+  $(eval KCONFIG := "tinyconfig")
+endif
+ifeq ($(CONFIG_LKL_RANDCONFIG),y)
+  $(eval KCONFIG := "randconfig")
+endif
+ifeq ($(CONFIG_LKL_ALLDEFCONFIG),y)
+  $(eval KCONFIG := "alldefconfig")
+endif
+ifeq ($(CONFIG_LKL_ALLMODCONFIG),y)
+  $(eval KCONFIG := "allmodconfig")
+endif
+ifeq ($(CONFIG_LKL_ALLYESCONFIG),y)
+  $(eval KCONFIG := "allyesconfig")
+endif
+ifeq ($(CONFIG_LKL_ALLNOCONFIG),y)
+  $(eval KCONFIG := "allnoconfig")
+endif
+
 $(LIBLKL_BUILD)/lkl.o:
 	mkdir -p $(LKL_OUTPUT)/tools/lkl
 	$(MAKE) -C $(LKL_SRCDIR) \
 	  $(LKL_OUTPUT)/tools/lkl/lib/lkl.o \
 	  CROSSCOMPILE=$(CONFIG_CROSS_COMPILE) \
 	  $(LKL_VERBOSE) \
+	  KCONFIG=$(KCONFIG) \
 	  OUTPUT=$(LKL_OUTPUT)/tools/lkl/ \
 	  O=$(LKL_OUTPUT)/
 	cp $(LKL_OUTPUT)/tools/lkl/lib/lkl.o $(LIBLKL_BUILD)/lkl.o
