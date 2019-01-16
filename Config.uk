@@ -1,7 +1,6 @@
 menuconfig LIBLKL
 	bool "lkl: Linux Kernel Library"
 	default no
-	select PLAT_LINUXU
 	select LIBNEWLIBC
 
 if LIBLKL
