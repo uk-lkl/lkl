@@ -48,12 +48,6 @@ CINCLUDES-$(CONFIG_PLAT_LINUXU)	+= -I$(LIBLINUXUPLAT_BASE)/include
 CINCLUDES-$(CONFIG_PLAT_LINUXU)	+= -I$(UK_PLAT_COMMON_BASE)/include
 
 LIBLKL_CFLAGS-y += -D__FIBER__
-ifeq ($(CONFIG_PLAT_KVM),y)
-  LIBLKL_CFLAGS-y += -D__KVM__
-endif
-ifeq ($(CONFIG_PLAT_LINUXU),y)
-  LIBLKL_CFLAGS-y += -D__LINUXU__
-endif
 
 # LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/config.c
 LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/dbg.c
@@ -62,7 +56,6 @@ LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/fs.c
 LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/iomem.c
 LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/jmp_buf.c
 LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/net.c
-LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/uk-host.c
 LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/utils.c
 LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/virtio.c
 # LIBLKL_SRCS-y += $(LKL_SRCDIR)/../perf/pmu-events/jsmn.c
@@ -77,5 +70,7 @@ LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/lk/kernel/semaphore.c
 LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/lk/kernel/thread.c
 LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/lk/kernel/timer.c
 LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/lk/platform/posix/posix-timer.c
+LIBLKL_SRCS-$(CONFIG_PLAT_LINUXU) += $(LKL_SRCDIR)/lib/uk-linuxu-host.c
+LIBLKL_SRCS-$(CONFIG_PLAT_KVM) += $(LKL_SRCDIR)/lib/uk-kvm-host.c
 
 LIBLKL_CLEAN-y += $(LIBLKL_BUILD)/lkl.o
