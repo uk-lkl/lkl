@@ -39,7 +39,10 @@ $(LIBLKL_BUILD)/lkl.o:
 	  KCONFIG=$(KCONFIG) \
 	  OUTPUT=$(LKL_OUTPUT)/tools/lkl/ \
 	  O=$(LKL_OUTPUT)/
-	cp $(LKL_OUTPUT)/tools/lkl/lib/lkl.o $(LIBLKL_BUILD)/lkl.o
+	objcopy \
+	  --globalize-symbol=_sinittext \
+	  --globalize-symbol=_einittext \
+	  $(LKL_OUTPUT)/tools/lkl/lib/lkl.o $(LIBLKL_BUILD)/lkl.o
 
 $(eval LIBLKL_OBJS-$(CONFIG_LIBLKL) += $(LIBLKL_BUILD)/lkl.o)
 
