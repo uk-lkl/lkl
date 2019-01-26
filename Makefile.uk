@@ -75,3 +75,4 @@ LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/lk/kernel/timer.c
 LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/lk/platform/posix/posix-timer.c
 
 LIBLKL_CLEAN-y += $(LIBLKL_BUILD)/lkl.o
+LIBLKL_CLEAN-y += $(shell rm -rf $(LKL_OUTPUT) > /dev/null)
