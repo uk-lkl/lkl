@@ -1,0 +1,27 @@
+From 1640dfc6322a7d5761bb28805d5ae3c864a55ace Mon Sep 17 00:00:00 2001
+From: Akira Moroo <retrage01@gmail.com>
+Date: Mon, 28 Jan 2019 12:06:56 +0900
+Subject: [PATCH] uk: Avoid missing file include
+
+Signed-off-by: Akira Moroo <retrage01@gmail.com>
+---
+ tools/lkl/include/lkl/linux/if.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tools/lkl/include/lkl/linux/if.h b/tools/lkl/include/lkl/linux/if.h
+index 24a28efa0d4c..d533f9cb2713 100644
+--- a/tools/lkl/include/lkl/linux/if.h
++++ b/tools/lkl/include/lkl/linux/if.h
+@@ -25,7 +25,9 @@
+ #include <lkl/linux/socket.h>		/* for "struct lkl_sockaddr" et al	*/
+ 		/* for "__lkl__user" et al           */
+ 
++#if 0
+ #include <sys/socket.h>			/* for struct lkl_sockaddr.		*/
++#endif
+ 
+ #if __LKL__UAPI_DEF_IF_IFNAMSIZ
+ #define	LKL_IFNAMSIZ	16
+-- 
+2.17.1
+
