@@ -46,7 +46,6 @@ $(LIBLKL_BUILD)/lkl.o:
 $(eval LIBLKL_OBJS-$(CONFIG_LIBLKL) += $(LIBLKL_BUILD)/lkl.o)
 
 CINCLUDES-$(CONFIG_LIBLKL)	+= -I$(LKL_SRCDIR)/include
-CINCLUDES-$(CONFIG_LIBLKL)	+= -I$(CONFIG_UK_BASE)/plat/common/include
 
 LIBLKL_CFLAGS-y += -D__FIBER__
 
