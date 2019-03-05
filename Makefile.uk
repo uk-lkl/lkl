@@ -50,8 +50,8 @@ CINCLUDES-$(CONFIG_LIBLKL)	+= -I$(LKL_SRCDIR)/include
 LIBLKL_CFLAGS-y += -D__FIBER__
 
 # LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/config.c
-LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/dbg.c
-LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/dbg_handler.c
+# LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/dbg.c
+# LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/dbg_handler.c
 LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/fs.c
 LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/iomem.c
 LIBLKL_SRCS-y += $(LKL_SRCDIR)/lib/jmp_buf.c

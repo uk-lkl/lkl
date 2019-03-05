@@ -1,7 +1,7 @@
 menuconfig LIBLKL
 	bool "lkl: Linux Kernel Library"
 	default no
-	select LIBNEWLIBC
+	select LIBVFSCORE
 
 if LIBLKL
 choice
